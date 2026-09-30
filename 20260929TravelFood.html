@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenData 地方美食資料練習</title>
+    
+    <link rel="stylesheet" href="css/myallcss.css">
+    <style>
+        :root {
+        /* 露易莎風格配色盤 */
+            --ls-primary-orange: #E65A15;     /* 品牌橘色 */
+            --ls-dark-coffee: #2C1E16;        /* 深焙咖啡黑 */
+            --ls-bg-latte: #F9F6F0;           /* 拿鐵米白背景 */
+            --ls-card-bg: #FFFFFF;            /* 卡片純白背景 */
+            --ls-text-main: #4A3326;          /* 文字主色：濃縮咖啡褐 */
+             --ls-text-sub: #8B6D5C;           /* 文字副色：淺焙棕 */
+             --ls-border-color: #E8DCC4;       /* 邊框色 */
+            --ls-shadow-normal: rgba(44, 30, 22, 0.08); /* 基礎陰影 */
+            --ls-shadow-hover: rgba(230, 90, 21, 0.15); /* 滑鼠懸停橘色陰影 */
+        }
+
+        /* 預設重置 */
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; 
+        }
+
+        body {
+            background-color: var(--ls-bg-latte);
+            font-family: "Helvetica Neue", Helvetica, Arial, "微軟正黑體", sans-serif;
+        }
+
+        /* 主標題：露易莎風格標題 */
+        .mytitle-01 {
+            font-size: 32px;
+            font-weight: 800;
+            text-align: center;
+            color: var(--ls-dark-coffee);
+            padding: 40px 0 10px;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        /* 標題下方的橘色底線點綴 */
+        .mytitle-01::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--ls-primary-orange);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* 外層容器：改用 CSS Grid 自動排版，覆蓋掉原本的跑版設定 */
+        .wrapper {
+            max-width: 1024px;
+            margin: 20px auto 50px;
+            padding: 15px;
+            background-color: transparent;
+            box-shadow: none; /* 清除原本的醜陰影 */
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        /* 點餐卡片設計：圓角、陰影、底部橘色線條 */
+        .demo {
+            width: 100%;       /* 覆蓋原本的 32% */
+            float: none;       /* 覆蓋原本的 float: left */
+            margin: 0;         /* 覆蓋原本的 margin */
+            background-color: var(--ls-card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--ls-border-color);
+            border-bottom: 4px solid var(--ls-primary-orange);
+            box-shadow: 0 4px 12px var(--ls-shadow-normal);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 卡片懸停特效 */
+        .demo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px var(--ls-shadow-hover);
+        }
+
+        /* 圖片區塊 */
+        .demo .logo {
+            width: 100%;
+            height: 200px;
+            background-position: center;
+            background-size: cover;
+            background-color: var(--ls-border-color);
+        }
+
+        /* 文字內距統一 */
+        .demo p {
+            padding: 0 20px;
+            line-height: 1.5;
+        }
+
+        /* 店家名稱 (針對 JS 產生的第一個 p 標籤與原版的 mytitle-02) */
+        .demo p:nth-of-type(1) {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--ls-dark-coffee);
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+
+        /* 店家電話 (針對 JS 產生的第二個 p 標籤與原版的 mytitle-03) */
+        .demo p:nth-of-type(2) {
+            font-size: 15px;
+            color: var(--ls-text-sub);
+            margin-bottom: 20px;
+        }
+
+        /* 修正原本語法錯誤的 RWD (加入具體像素值) */
+        @media screen and (max-width: 768px) {
+            .wrapper {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="display-1 fw900 mytitle-01">地方美食</div>
+    <div class="wrapper" id="foodlist">
+        <div class="demo">
+            <!-- myallcss -->
+            <div class="logo bg-01" style="background-image: url(images/building01.avif);"></div>
+            <p class="mytitle-02">店家:XXX</p>
+            <p class="mytitle-03">電話:XXXXX</p>
+        </div>
+        
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/TravelFood.js"></script>
+    <script>
+        console.log(food);
+        food.forEach(function(item){
+            // console.log(item.Name);
+            // console.log(item.City);
+            // console.log(item.Email);
+
+            $("#foodlist").append('<div class="demo" id="foodlist"><div class="logo bg-01" style="background-image: url(' + item.PicURL + ');"></div><p class="mytitle-03">店家:'+item.Name+'</p><p class="mytitle-03">電話:'+item.Tel+'</p></div>');
+
+        });
+        
+    </script>
+
+
+ 
+</body>
+</html>

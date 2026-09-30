@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
+:root{
+    /* 露易莎風格配色盤 - 語意化變數命名 */
+    --brand-primary-orange: #F26522; /* 品牌主色：露易莎橘 */
+    --brand-dark-coffee: #3E2723;    /* 品牌副色：深焙咖啡黑 */
+    
+    --bg-outer-dark: #2B211D;        /* 外層背景：極深木紋色 */
+    --bg-content-latte: #F5EEE9;     /* 內容背景：溫暖的拿鐵米白色 */
+    --bg-footer-caramel: #D7C6BA;    /* 頁尾背景：焦糖淺褐色 */
+    
+    --btn-normal-brown: #6F4E37;     /* 按鈕一般狀態：中焙咖啡棕 */
+    --text-light: #FAFAFA;           /* 淺色文字：近乎純白 */
+    --text-dark-espresso: #4A3326;   /* 深色文字：濃縮咖啡褐 */
+    
+    --shadow-dark: rgba(43, 33, 29, 0.8);  /* 深色陰影 */
+    --shadow-light: rgba(215, 198, 186, 0.8); /* 淺色/Hover陰影 */
+}
+body{
+    font-family: "Zen Maru Gothic", sans-serif;
+}
+/* 字體粗細 */
+.fw-100{
+    font-weight: 100;
+}
+.fw-200{
+    font-weight: 200;
+}
+.fw-300{
+    font-weight: 300;
+}
+.fw-400{
+    font-weight: 400;
+}
+.fw-500{
+    font-weight: 500;
+}
+.fw-600{
+    font-weight: 600;
+}
+.fw-700{
+    font-weight: 700;
+}
+.fw-800{
+    font-weight: 800;
+}
+/* 標題 */
+.mytitle-01{
+    font-size: 64px;
+    font-weight: 900;
+    text-align: center;
+    color: #21afa8;
+}
+.mytitle-02{
+    font-size: 52px;
+    font-weight: 700;
+    text-align: center;
+    color: #5254d4;
+}
+.mytitle-03{
+    font-size: 48px;
+    font-weight: 500;
+    text-align: center;
+    color: #b110d1;
+}
+
+/* 背景圖 */
+.bg-01{
+    background-position: center center;
+    background-size: cover;
+}
