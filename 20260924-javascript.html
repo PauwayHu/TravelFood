@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 語法簡介</title>
+    <!-- 載入css用link -->
+    <link rel="stylesheet" href="css/myallcss.css">
+    <style>
+        /* css語法 */
+    
+    </style>
+</head>
+<body>
+    <!-- HTML -->
+    <p class="mytitle-01" id="00">JAVASCRIPT 練習01</p>
+    <p class="mytitle-02" id="01">這是一個大標題</p>
+    <p class="mytitle-03" id="02">這是一個大標題</p>
+    <p class="mytitle-02" id="03">這是一個大標題</p>
+    <p class="mytitle-01" id="04">這是一個大標題</p>
+    
+    <!-- 補上 id="06" 的元素，讓後面的 JS 找得到東西 -->
+    <div id="06"></div>
+    
+    <div id="07"></div>
+    <!-- 顯示每一家車子的品牌加上序號
+    1 : Saab
+    2 : Volvo -->
+
+
+    <h1 class="mytitle-02">顯示每一家車子 的品牌加上序號(forEach)</h1>
+    <div id="08">
+        <p class="mytitle-03">1 : Toyota</p>
+    </div>
+
+    <!-- 
+        顯示每一個人的基本資料
+        編號1, 姓名XX, 年齡XX, 居住在XX城市,職業為XXX
+    -->
+    <h1>顯示每一個人的基本資料(JSON)</h1>
+    <div id="09">
+        <p class="mytitle-01"> 1 : 資料統計</p>
+    </div>
+
+    <script src="js/jquery.js"></script>
+
+    <script>
+        // javascript原生語法 getElementByID找東西要取得id
+        document.getElementById("00").innerText = "Hello World!";
+        document.getElementById("01").innerHTML = "123456";
+        document.getElementById("02").innerHTML = "abc";
+        document.getElementById("03").innerHTML = "零壹貳叁肆";
+        document.getElementById("04").innerHTML = "捌十萬";
+        
+        // 現在找得到 id="06" 了，不會再報錯
+        document.getElementById("06").innerText = "123";
+
+        // jquery 語法 , --> class # --> id
+        $("#00").html("零壹貳叁肆");
+        $("#01").html("零肆");
+
+        
+        // 迴圈 i++ (建議加上 let 來宣告變數)
+        for(let i = 1; i <= 10; i++){
+            console.log(i + ": Hello");
+        }
+        // 99乘法
+        for(let i = 1; i < 10; i++){
+            for(let j = 1; j < 10; j++){
+                console.log(i + " X " + j + " = " + i*j);
+            }
+        }
+        
+        // 修正：將 i + 0 改為 let i = 0
+        for(let i = 0; i < 5; i++){
+            $("#06").append('<p class="mytitle-03">這是一個hello</p>');
+        }
+        // 要加#字號很重要
+        for(i = 0; i < 10; i++){
+            $("#07").append('<img src="images/building01.avif" width="600px" alt="">');
+        }
+        
+        // 陣列 Array
+        const  cars = ["Toyota",
+        "Honda",
+        "Nissan",
+        "Mazda",
+        "Subaru",
+        "Hyundai",
+        "Kia",
+        "BMW",
+        "Mercedes-Benz",
+        "Audi",
+        "Volkswagen",
+        "Porsche",
+        "Volvo",
+        "Ford",
+        "Chevrolet",
+        "Tesla",
+        "Ferrari",
+        "Lamborghini",
+        "Lexus",
+        "Land Rover"];
+        console.log(cars);
+        // 想要找某一個特定的東西只要打號碼就好
+        console.log(cars[0]);
+        console.log(cars[1]);
+        console.log(cars[2]);
+
+        // 使用for迴圈印出cars array的內容
+        for( i = 0; i < cars.length; i++){
+            console.log(cars[i]);
+        }
+
+        //使用forEach讀取陣列 一個function就是一個事件, index索引
+        cars.forEach(function(item, index){
+            console.log(index);
+            console.log(item);
+        });
+        
+        // 顯示每一家車子 的品牌加上序號(forEach)
+        cars.forEach(function(item, index){
+            $("#08").append('<p class="mytitle-03">' + index + ': ' + item + '</p>');
+        });
+        
+        //Json 格式 array[object, object, object, object]
+        const persons = [
+            {
+                "name" : "小明",
+                "age"  : 18,
+                "city" : "台中市",
+                "occupation" : "學生",
+                "company" : "",
+                "school" : "台中一中",
+                "skill_or_hobby" : "打籃球"
+            },
+            {
+                "name" : "小日",
+                "age"  : 28,
+                "city" : "台北市",
+                "occupation" : "前端工程師",
+                "company" : "某網路科技公司",
+                "school" : "",
+                "skill_or_hobby" : "寫程式"
+            },
+            {
+                "name" : "小月",
+                "age"  : 38,
+                "city" : "台南市",
+                "occupation" : "銀行行員",
+                "company" : "台灣銀行",
+                "school" : "",
+                "skill_or_hobby" : "理財規劃"
+            },
+            {
+                "name" : "小華",
+                "age"  : 22,
+                "city" : "高雄市",
+                "occupation" : "學生",
+                "company" : "",
+                "school" : "國立中山大學",
+                "skill_or_hobby" : "游泳"
+            },
+            {
+                "name" : "小美",
+                "age"  : 25,
+                "city" : "桃園市",
+                "occupation" : "後端工程師",
+                "company" : "台積電",
+                "school" : "",
+                "skill_or_hobby" : "系統架構"
+            },
+            {
+                "name" : "老王",
+                "age"  : 45,
+                "city" : "新竹市",
+                "occupation" : "專案經理",
+                "company" : "聯發科",
+                "school" : "",
+                "skill_or_hobby" : "跨部門溝通"
+            },
+            {
+                "name" : "阿偉",
+                "age"  : 30,
+                "city" : "新北市",
+                "occupation" : "自由接案者",
+                "company" : "個人工作室",
+                "school" : "",
+                "skill_or_hobby" : "平面設計"
+            },
+            {
+                "name" : "莉莉",
+                "age"  : 19,
+                "city" : "台中市",
+                "occupation" : "學生",
+                "company" : "",
+                "school" : "逢甲大學",
+                "skill_or_hobby" : "彈吉他"
+            },
+            {
+                "name" : "大雄",
+                "age"  : 35,
+                "city" : "嘉義市",
+                "occupation" : "高中教師",
+                "company" : "嘉義高中",
+                "school" : "",
+                "skill_or_hobby" : "數學教學"
+            },
+            {
+                "name" : "靜香",
+                "age"  : 27,
+                "city" : "台北市",
+                "occupation" : "行銷企劃",
+                "company" : "奧美公關",
+                "school" : "",
+                "skill_or_hobby" : "活動主持"
+            },
+            {
+                "name" : "胖虎",
+                "age"  : 32,
+                "city" : "基隆市",
+                "occupation" : "店長",
+                "company" : "胖虎生鮮超市",
+                "school" : "",
+                "skill_or_hobby" : "唱歌"
+            },
+            {
+                "name" : "小夫",
+                "age"  : 29,
+                "city" : "宜蘭縣",
+                "occupation" : "建築師",
+                "company" : "小夫建築事務所",
+                "school" : "",
+                "skill_or_hobby" : "室內設計"
+            },
+            {
+                "name" : "喵喵",
+                "age"  : 24,
+                "city" : "花蓮縣",
+                "occupation" : "獸醫",
+                "company" : "快樂動物醫院",
+                "school" : "",
+                "skill_or_hobby" : "動物行為學"
+            }
+        ];
+        console.log(persons);
+        persons.forEach(function(item, index){
+            // item可以改成job,age之類的
+            console.log(item);
+        });
+
+        //顯示每一個人的基本資料
+        persons.forEach(function(item, index){
+            $("#09").append('<p class="mytitle-01">編號' + index + '姓名' + item.name +' ,年齡' + item.age + '歲,居住地' + item.city + '城市,職業為' + item.occupation + ' </p>');
+        });
+
+    </script>
+</body>
+</html>
